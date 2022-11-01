@@ -1,3 +1,3 @@
 export function setButton(buttonText) {
-  document.body.innerHTML = buttonText;
+  document.querySelector('body').innerHTML = buttonText;
 }
