@@ -39,9 +39,6 @@ const toggleDoneStatus = ({ target }) => {
 }
 
 const createTask = () => {
-  if (!taskInput.value) {
-    return;
-  }
   const task = { id: Date.now(), text: taskInput.value, done: false };
 
   tasks.unshift(task);
