@@ -1,3 +1,3 @@
 const inputElem = document.querySelector('.text-input');
 
-inputElem.addEventListener('click', (event) => console.log(event.target.value));
+inputElem.addEventListener('input', (event) => console.log(event.target.value));
