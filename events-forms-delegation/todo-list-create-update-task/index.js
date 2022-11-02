@@ -39,6 +39,9 @@ const toggleDoneStatus = ({ target }) => {
 }
 
 const createTask = () => {
+  if (!taskInput.value) {
+    return;
+  }
   const task = { id: Date.now(), text: taskInput.value, done: false };
 
   tasks.unshift(task);
@@ -50,4 +53,4 @@ const createTask = () => {
 renderTasks(tasks);
 
 createTaskBtn.addEventListener('click', createTask);
-list.addEventListener('change', toggleDoneStatus);
+list.addEventListener('click', toggleDoneStatus);
