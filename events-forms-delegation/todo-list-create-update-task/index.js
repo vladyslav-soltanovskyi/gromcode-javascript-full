@@ -11,10 +11,6 @@ const tasks = [
 const list = document.querySelector('.list');
 const formActions = document.querySelector('.actions');
 
-/**
- * @param {object[]} tasksList
- * @return {undefined}
- */
 const renderTasks = tasksList => {
   const tasksListTemplate = tasksList
       .sort((a, b) => a.done - b.done)
@@ -44,7 +40,7 @@ const toggleDoneStatus = ({ target }) => {
 const createTask = (e) => {
   e.preventDefault();
   const task = { id: Date.now(), text: e.target.text.value, done: false };
-  
+
   tasks.push(task);
   e.target.reset();
 
