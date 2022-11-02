@@ -38,8 +38,6 @@ const setErrors = () => {
   })
 }
 
-setErrors();
-
 email.addEventListener('input', setErrors);
 password.addEventListener('input', setErrors);
 loginForm.addEventListener('submit', handleSubmit)
