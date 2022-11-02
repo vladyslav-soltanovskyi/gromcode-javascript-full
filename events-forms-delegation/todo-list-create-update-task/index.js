@@ -9,7 +9,8 @@ const tasks = [
 ];
 
 const list = document.querySelector('.list');
-const formActions = document.querySelector('.actions');
+const taskInput = document.querySelector('.task-input');
+const createTaskBtn = document.querySelector('.create-task-btn');
 
 const renderTasks = tasksList => {
   const tasksListTemplate = tasksList
@@ -37,17 +38,19 @@ const toggleDoneStatus = ({ target }) => {
   renderTasks(tasks);
 }
 
-const createTask = (e) => {
-  e.preventDefault();
-  const task = { id: Date.now(), text: e.target.text.value, done: false };
+const createTask = () => {
+  if (!taskInput.value) {
+    return;
+  }
+  const task = { id: Date.now(), text: taskInput.value, done: false };
 
-  tasks.push(task);
-  e.target.reset();
+  tasks.unshift(task);
+  taskInput.value = '';
 
   renderTasks(tasks);
 }
 
 renderTasks(tasks);
 
-formActions.addEventListener('submit', createTask);
+createTaskBtn.addEventListener('click', createTask);
 list.addEventListener('change', toggleDoneStatus);
