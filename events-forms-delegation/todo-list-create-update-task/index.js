@@ -12,23 +12,7 @@ const list = document.querySelector('.list');
 const taskInput = document.querySelector('.task-input');
 const createTaskBtn = document.querySelector('.create-task-btn');
 
-const renderTasks = tasksList => {
-  const tasksListTemplate = tasksList
-      .sort((a, b) => a.done - b.done)
-      .reduce((template, { text, done, id }) => template + (
-        `<li class="${done ? 'list__item list__item_done' : 'list__item' }">
-          <input type="checkbox" class="list__item-checkbox" data-task-id="${id}" ${done ? 'checked' : ''} />
-          ${text}
-        </li>`
-      ), '');
-
-  list.innerHTML = tasksListTemplate;
-};
-
 const toggleDoneStatus = ({ target }) => {
-  if (!target.dataset.taskId) {
-    return;
-  }
   const { taskId } = target.dataset;
   const indexTask = tasks.findIndex((task) => task.id === +taskId);
 
@@ -50,7 +34,31 @@ const createTask = () => {
   renderTasks(tasks);
 }
 
+function renderTasks(tasksList) {
+  const prevCheckboxes = list.querySelectorAll('.list__item-checkbox');
+  prevCheckboxes.forEach(checkbox => checkbox.removeEventListener('click', toggleDoneStatus));
+
+  const tasksElements = tasksList
+    .sort((a, b) => a.done - b.done)
+    .map(({ text, done }) => {
+      const listItemElem = document.createElement('li');
+      listItemElem.classList.add('list__item');
+      const checkbox = document.createElement('input');
+      checkbox.setAttribute('type', 'checkbox');
+      checkbox.checked = done;
+      checkbox.classList.add('list__item-checkbox');
+      if (done) {
+        listItemElem.classList.add('list__item_done');
+      }
+      checkbox.addEventListener('click', toggleDoneStatus);
+      listItemElem.append(checkbox, text);
+
+      return listItemElem;
+    });
+
+  list.append(...tasksElements);
+};
+
 renderTasks(tasks);
 
 createTaskBtn.addEventListener('click', createTask);
-list.addEventListener('click', toggleDoneStatus);
