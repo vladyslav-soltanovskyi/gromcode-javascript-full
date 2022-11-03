@@ -1,4 +1,4 @@
-const getDiff = (startDate, endDate) => {
+export const getDiff = (startDate, endDate) => {
   const startTime = Date.parse(startDate);
   const endTime = Date.parse(endDate);
   const diffTime = startTime > endTime ? startTime - endTime : endTime - startTime;
