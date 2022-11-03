@@ -1,3 +1,7 @@
-export const getGreenwichTime = (date) => {
-  return new Intl.DateTimeFormat('ua-UA', { hour: 'numeric', minute: 'numeric' }).format(Date.UTC(date)); 
-}
+export const getGreenwichTime = (date) => (
+  new Intl.DateTimeFormat('ua-UA', {
+    hour: '2-digit',
+    minute: '1-digit',
+    hour12: false
+  }).format(date)
+)
