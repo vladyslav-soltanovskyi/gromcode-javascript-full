@@ -12,5 +12,5 @@ export const getLocalStorageData = () => (
           [key]: newValue
         }
       }
-    })
+    }, {})
 );
