@@ -19,7 +19,7 @@ const setMethodsNames = {
 };
 
 
-const shmoment = (date) => {
+export const shmoment = (date) => {
   let result = new Date(date);
 
   const calculator = {
@@ -40,5 +40,3 @@ const shmoment = (date) => {
 
   return calculator;
 };
-
-export default shmoment;
