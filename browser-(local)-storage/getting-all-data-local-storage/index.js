@@ -1,5 +1,7 @@
 export const getLocalStorageData = () => (
-  Object.fromEntries(
-    Object.entries(localStorage)
-  )
+  Object.entries(localStorage)
+    .reduce((acc, [key, value]) => ({
+      ...acc,
+      [key]: JSON.parse(value)
+    }))
 )
