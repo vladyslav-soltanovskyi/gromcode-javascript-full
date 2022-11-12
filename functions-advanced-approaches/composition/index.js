@@ -1,0 +1,1 @@
+export const compose = (...funcs) => (value) => funcs.reduce((total, func) => func(total), value);
