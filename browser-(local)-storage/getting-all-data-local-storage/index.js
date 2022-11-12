@@ -6,10 +6,11 @@ export const getLocalStorageData = () => (
         newValue = JSON.parse(value)
       } catch(e) {
         newValue = value
-      }
-      return {
-        ...acc,
-        [key]: newValue
+      } finally {
+        return {
+          ...acc,
+          [key]: newValue
+        }
       }
     })
-)
+);
