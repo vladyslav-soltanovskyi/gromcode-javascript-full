@@ -1,11 +1,4 @@
-'use strict';
-
-/**
- * @param {string} userId
- * @return {promise}
- */
 export const requestUserData = userId => {
-  // put your code here
   return new Promise((resolve, reject) => {
     if (userId === 'broken') {
       setTimeout(() => {
