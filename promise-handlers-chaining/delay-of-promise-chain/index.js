@@ -1,5 +1,5 @@
-export const asyncCalculator = (numbr) => {
+export const dalay = (period) => {
   return new Promise((resolve) => {
-    setTimeout(resolve, 3000);
+    setTimeout(resolve, period);
   })
 }
