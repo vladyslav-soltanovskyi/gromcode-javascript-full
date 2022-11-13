@@ -14,6 +14,7 @@ export const pinger = (count, period) => {
     counter--;
     counter === 0 && clearInterval(intervalId);
   }
+  ping();
   intervalId = setInterval(ping, period / (count - 1))
 };
 
