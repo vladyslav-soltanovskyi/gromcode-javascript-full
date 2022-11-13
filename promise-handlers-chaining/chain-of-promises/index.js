@@ -9,14 +9,12 @@ export const asyncCalculator = (numbr) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         console.log(`Squared value: ${value**2}`);  
-        resolve(value)
+        resolve(value**2)
       }, 500);
     })
   })
   .then(value => {
-    return new Promise((resolve, reject) => {
-        console.log(`Doubled value: ${value * 2}`);  
-        resolve(value);
-    })
+    console.log(`Doubled value: ${value * 2}`);
+    return value * 2;
   })
 }
