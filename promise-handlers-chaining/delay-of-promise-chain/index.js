@@ -1,5 +1,5 @@
-export const dalay = (period) => {
+export const delay = (period) => {
   return new Promise((resolve) => {
-    setTimeout(resolve, period);
+    setTimeout(() => resolve(), period);
   })
 }
