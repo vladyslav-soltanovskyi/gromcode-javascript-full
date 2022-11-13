@@ -1,9 +1,10 @@
-const containerElem = document.querySelector('.page');
 
 export const addImage = (imgSrc, callback) => {
   const imgElem = document.createElement('img');
   imgElem.src = imgSrc;
   imgElem.setAttribute('alt', 'My Photo');
+
+  const containerElem = document.querySelector('.page');
   
   containerElem.append(imgElem);
   
