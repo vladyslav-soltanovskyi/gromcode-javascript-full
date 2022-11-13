@@ -10,7 +10,7 @@ export const pinger = (count, period) => {
   let intervalId;
   let counter = count;
   const ping = () => {
-    console.log("Ping");
+    console.log('Ping');
     counter--;
     counter === 0 && clearInterval(intervalId);
   }
