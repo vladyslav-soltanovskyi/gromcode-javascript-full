@@ -11,7 +11,7 @@ const fakeApi = (source) => {
   });
 }
 
-const getUserASAP = (userId) => (
+export const getUserASAP = (userId) => (
   Promise.race([
     fakeApi(`https://server.com/us/${userId}`).then(response => response),
     fakeApi(`https://server.com/eu/${userId}`).then(response => response),
