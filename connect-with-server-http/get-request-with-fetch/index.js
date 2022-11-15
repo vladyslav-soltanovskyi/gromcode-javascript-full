@@ -17,9 +17,6 @@ const renderUserData = ({ avatar_url, name, location }) => {
 
 const onSearchUser = () => {
   const userName = nameFormInput.value;
-  if (!userName) {
-    return;
-  }
   fetchUserData(userName)
     .then(userData => renderUserData(userData));
 }
