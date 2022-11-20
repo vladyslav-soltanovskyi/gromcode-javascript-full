@@ -16,22 +16,12 @@ const request = (url, { method = 'GET', body = {}, ...rest } = {}) => {
     .then(res => res.json());
 }
 
-export function getUsersList() {
-  return request('');
-}
+export const getUsersList = () => request('');
 
-export function getUserById(userId) {
-  return request(`/${userId}`);
-}
+export const getUserById = (userId) => request(`/${userId}`);
 
-export function createUser(userData) {
-  return request('', { method: "POST", body: userData });
-}
+export const createUser = (userData) => request('', { method: "POST", body: userData });
 
-export function deleteUser(userId) {
-  return request(`/${userId}`, { method: "DELETE" });
-}
+export const deleteUser = (userId) => request(`/${userId}`, { method: "DELETE" });
 
-export function updateUser(userId, userData) {
-  return request(`/${userId}`, { method: "PUT", body: userData });
-}
+export const updateUser = (userId, userData) => request(`/${userId}`, { method: "PUT", body: userData });
