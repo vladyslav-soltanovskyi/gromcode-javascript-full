@@ -16,7 +16,7 @@ const request = (url, { method = 'GET', body = {}, ...rest }) => {
     .then(res => res.json());
 }
 
-export function getUsersList() {
+function getUsersList() {
   return request('users', { method: "GET" });
 }
 
