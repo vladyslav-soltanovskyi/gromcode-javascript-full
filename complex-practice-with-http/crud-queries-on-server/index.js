@@ -1,6 +1,6 @@
-const baseUrl = 'https://61d8e2cfe6744d0017ba8cdc.mockapi.io/';
+const baseUrl = 'https://61d8e2cfe6744d0017ba8cdc.mockapi.io/users';
 
-const request = (url, { method = 'GET', body = {}, ...rest }) => {
+const request = (url, { method = 'GET', body = {}, ...rest } = {}) => {
   const headers = {
     'Content-Type': 'application/json;charset=utf-8',
     ...rest.headers
@@ -16,22 +16,22 @@ const request = (url, { method = 'GET', body = {}, ...rest }) => {
     .then(res => res.json());
 }
 
-function getUsersList() {
-  return request('users', { method: "GET" });
+export function getUsersList() {
+  return request('');
 }
 
 export function getUserById(userId) {
-  return request(`users/${userId}`, { method: "GET" });
+  return request(`/${userId}`);
 }
 
 export function createUser(userData) {
-  return request('users', { method: "POST", body: userData });
+  return request('', { method: "POST", body: userData });
 }
 
 export function deleteUser(userId) {
-  return request(`users/${userId}`, { method: "DELETE" });
+  return request(`/${userId}`, { method: "DELETE" });
 }
 
 export function updateUser(userId, userData) {
-  return request(`users/${userId}`, { method: "PUT", body: userData });
+  return request(`/${userId}`, { method: "PUT", body: userData });
 }
