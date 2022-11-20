@@ -1,4 +1,4 @@
-const baseUrl = 'https://5e5af5eb37d2eh00167913f52.mockapi.io/api/v1/users';
+const baseUrl = 'https://61d8e2cfe6744d0017ba8cdc.mockapi.io/users';
 
 const request = (url, { method = 'GET', body = {}, ...rest } = {}) => {
   const headers = {
