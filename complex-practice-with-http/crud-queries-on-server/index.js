@@ -5,9 +5,15 @@ const request = (url, options) => (
     .then(res => res.json())
 );
 
-export const getUsersList = () => request('');
+export const getUsersList = () => (
+  fetch(`${baseUrl}`)
+    .then(res => res.json())
+);
 
-export const getUserById = (userId) => request(`/${userId}`);
+export const getUserById = (userId) => (
+  fetch(`${baseUrl}/${userId}`)
+    .then(res => res.json())
+)
 
 export const createUser = (userData) => request('', {
   method: "POST",
