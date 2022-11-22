@@ -27,28 +27,31 @@ const generateReposList = (reposList) => (
   ), '')
 )
 
-const renderUserData = ({ avatar_url, name, location, repos_url }) => {
+const renderUserData = ({ avatar_url, name, location}) => {
   userAvatar.src = avatar_url;
   userName.textContent = name;
   userLocation.textContent = !location ? '' : `from ${location}`;
+}
 
-  fetchReposList(repos_url)
+const onSearchUser = () => {
+  const userName = nameFormInput.value;
+  
+  spinnerElem.classList.remove('spinner_hidden');
+  repoListElem.innerHTML = '';
+
+  fetchUserData(userName)
+    .then(userData => {
+      renderUserData(userData)
+      return userData.repos_url;
+    })
+    .then(reposUrl => fetchReposList(reposUrl))
     .then(reposList => {
       repoListElem.innerHTML = generateReposList(reposList);
     })
     .catch(() => alert('Failed to load data'))
     .finally(() => {
       spinnerElem.classList.add('spinner_hidden');
-    })
-}
-
-const onSearchUser = () => {
-  const userName = nameFormInput.value;
-  spinnerElem.classList.remove('spinner_hidden');
-  repoListElem.innerHTML = '';
-  fetchUserData(userName)
-    .then(userData => renderUserData(userData))
-    .catch(() => alert('Failed to load data'));
+    });
 }
 
 nameFormBtn.addEventListener('click', onSearchUser);
