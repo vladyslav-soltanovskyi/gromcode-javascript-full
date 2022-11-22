@@ -5,7 +5,7 @@ successRequest
         throw new Error('Error with data')
     })
     .catch(function onError1(error) {
-        console.error(error.message);
+        console.error("onError1", error.message);
     })
 
 
@@ -20,5 +20,5 @@ failRequest
         console.log("onSuccess2", data);
     })
     .catch(function onError3(error) {
-        console.error(error.message);
+        console.error("onError3", error.message);
     });
