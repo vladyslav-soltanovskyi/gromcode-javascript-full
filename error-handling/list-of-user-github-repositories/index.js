@@ -28,12 +28,9 @@ const generateReposList = (reposList) => (
 )
 
 const renderUserData = ({ avatar_url, name, location, repos_url }) => {
-  console.log(avatar_url, name, location, repos_url);
   userAvatar.src = avatar_url;
   userName.textContent = name;
   userLocation.textContent = !location ? '' : `from ${location}`;
-  spinnerElem.classList.remove('spinner_hidden');
-  repoListElem.innerHTML = '';
 
   fetchReposList(repos_url)
     .then(reposList => {
@@ -47,6 +44,8 @@ const renderUserData = ({ avatar_url, name, location, repos_url }) => {
 
 const onSearchUser = () => {
   const userName = nameFormInput.value;
+  spinnerElem.classList.remove('spinner_hidden');
+  repoListElem.innerHTML = '';
   fetchUserData(userName)
     .then(userData => renderUserData(userData));
 }
