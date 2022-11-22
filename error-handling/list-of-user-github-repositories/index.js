@@ -47,7 +47,8 @@ const onSearchUser = () => {
   spinnerElem.classList.remove('spinner_hidden');
   repoListElem.innerHTML = '';
   fetchUserData(userName)
-    .then(userData => renderUserData(userData));
+    .then(userData => renderUserData(userData))
+    .catch(() => alert('Failed to load data'));
 }
 
 nameFormBtn.addEventListener('click', onSearchUser);
